@@ -37,6 +37,18 @@
       <v-icon>{{ mdiChevronLeft }}</v-icon>
     </v-btn>
     <v-btn
+     v-shortkey.once="['arrowup']"
+   	text
+	fab
+	small
+	@shortkey="random"
+	@click="random" 
+	>
+     <v-icon>{{ mdiDiceMultipleOutline }}</v-icon>
+    </v-btn>
+
+
+    <v-btn
       v-shortkey.once="['arrowright']"
       :disabled="isLastPage"
       text
@@ -63,7 +75,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mdiPageFirst, mdiPageLast, mdiChevronLeft, mdiChevronRight } from '@mdi/js'
+import { mdiPageFirst, mdiPageLast, mdiChevronLeft, mdiChevronRight, mdiDiceMultipleOutline } from '@mdi/js'
 
 export default Vue.extend({
   props: {
@@ -89,7 +101,8 @@ export default Vue.extend({
       mdiPageFirst,
       mdiPageLast,
       mdiChevronLeft,
-      mdiChevronRight
+      mdiChevronRight,
+      mdiDiceMultipleOutline
     }
   },
 
@@ -103,6 +116,12 @@ export default Vue.extend({
   },
 
   methods: {
+
+    random() {
+	const rnd = Math.floor(Math.random() * this.total) + 1;
+	this.$emit('click:jump', rnd);
+    },
+
     changePageNumber() {
       if (!this.editedPage) {
         return
