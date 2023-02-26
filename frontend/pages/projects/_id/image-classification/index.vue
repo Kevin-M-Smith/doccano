@@ -43,7 +43,9 @@
           />
         </v-card-title>
         <v-divider />
-        <v-img contain :src="image.url" :max-height="750" class="grey lighten-2" />
+        <a v-bind:download="image.filename" 
+		v-bind:href="image.url" target="_blank">{{ image.filename }} </a>
+	<v-img contain :src="image.url" :max-height="750" class="grey lighten-2" />
       </v-card>
     </template>
     <template #sidebar>
