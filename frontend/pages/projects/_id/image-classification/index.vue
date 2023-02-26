@@ -43,7 +43,7 @@
           />
         </v-card-title>
         <v-divider />
-        <v-img contain :src="image.url" :max-height="imageSize.height" class="grey lighten-2" />
+        <v-img contain :src="image.url" :max-height="750" class="grey lighten-2" />
       </v-card>
     </template>
     <template #sidebar>
