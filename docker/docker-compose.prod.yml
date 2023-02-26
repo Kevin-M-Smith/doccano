@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
   backend:
-    image: freiwasser/doc-back:v1
+    image: freiwasser/doc-back:v2
     volumes:
       - static_volume:/backend/staticfiles
       - media:/backend/media
@@ -23,7 +23,7 @@ services:
       - network-frontend
 
   celery:
-    image: freiwasser/doc-back:v1
+    image: freiwasser/doc-back:v2
     volumes:
       - media:/backend/media
       - tmp_file:/backend/filepond-temp-uploads
@@ -40,7 +40,7 @@ services:
       - network-backend
 
   flower:
-    image: freiwasser/doc-back:v1
+    image: freiwasser/doc-back:v2
     entrypoint: ["/opt/bin/prod-flower.sh"]
     environment:
       PYTHONUNBUFFERED: "1"
@@ -67,7 +67,7 @@ services:
       - network-backend
 
   nginx:
-    image: freiwasser/doc-front:v1
+    image: freiwasser/doc-front:v2
     command: >
       /bin/sh -c
       "envsubst '
